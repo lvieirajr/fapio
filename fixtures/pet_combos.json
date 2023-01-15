@@ -1,0 +1,520 @@
+{
+    "1": {
+        "id": "1",
+        "pet_ids": [
+            3,
+            7
+        ],
+        "bonuses": {
+            "base_residue": 1
+        }
+    },
+    "2": {
+        "id": "2",
+        "pet_ids": [
+            13,
+            19
+        ],
+        "bonuses": {
+            "base_residue": 1
+        }
+    },
+    "3": {
+        "id": "3",
+        "pet_ids": [
+            4,
+            6,
+            11
+        ],
+        "bonuses": {
+            "base_residue": 1
+        }
+    },
+    "4": {
+        "id": "4",
+        "pet_ids": [
+            14,
+            17,
+            28
+        ],
+        "bonuses": {
+            "base_residue": 1
+        }
+    },
+    "5": {
+        "id": "5",
+        "pet_ids": [
+            15,
+            20,
+            25
+        ],
+        "bonuses": {
+            "base_residue": 1
+        }
+    },
+    "6": {
+        "id": "6",
+        "pet_ids": [
+            5,
+            9
+        ],
+        "bonuses": {
+            "equipment_rarity": 1
+        }
+    },
+    "7": {
+        "id": "7",
+        "pet_ids": [
+            11,
+            18
+        ],
+        "bonuses": {
+            "equipment_rarity": 1
+        }
+    },
+    "8": {
+        "id": "8",
+        "pet_ids": [
+            10,
+            15,
+            17
+        ],
+        "bonuses": {
+            "equipment_rarity": 1
+        }
+    },
+    "9": {
+        "id": "9",
+        "pet_ids": [
+            12,
+            19,
+            22
+        ],
+        "bonuses": {
+            "equipment_rarity": 1
+        }
+    },
+    "10": {
+        "id": "10",
+        "pet_ids": [
+            13,
+            24,
+            34
+        ],
+        "bonuses": {
+            "equipment_rarity": 1
+        }
+    },
+    "11": {
+        "id": "11",
+        "pet_ids": [
+            6,
+            8
+        ],
+        "bonuses": {
+            "drop_chance": 0.005,
+            "bonus_chance": 0.05
+        }
+    },
+    "12": {
+        "id": "12",
+        "pet_ids": [
+            12,
+            18
+        ],
+        "bonuses": {
+            "drop_chance": 0.005,
+            "bonus_chance": 0.05
+        }
+    },
+    "13": {
+        "id": "13",
+        "pet_ids": [
+            2,
+            7,
+            9
+        ],
+        "bonuses": {
+            "drop_chance": 0.005,
+            "bonus_chance": 0.05
+        }
+    },
+    "14": {
+        "id": "14",
+        "pet_ids": [
+            16,
+            20,
+            27
+        ],
+        "bonuses": {
+            "drop_chance": 0.005,
+            "bonus_chance": 0.05
+        }
+    },
+    "15": {
+        "id": "15",
+        "pet_ids": [
+            18,
+            22,
+            23
+        ],
+        "bonuses": {
+            "drop_chance": 0.005,
+            "bonus_chance": 0.05
+        }
+    },
+    "16": {
+        "id": "16",
+        "pet_ids": [
+            1,
+            3
+        ],
+        "bonuses": {
+            "potatoes_spawn": 1
+        }
+    },
+    "17": {
+        "id": "17",
+        "pet_ids": [
+            2,
+            5,
+            9
+        ],
+        "bonuses": {
+            "potatoes_spawn": 1
+        }
+    },
+    "18": {
+        "id": "18",
+        "pet_ids": [
+            10,
+            15,
+            20
+        ],
+        "bonuses": {
+            "potatoes_spawn": 1
+        }
+    },
+    "19": {
+        "id": "19",
+        "pet_ids": [
+            8,
+            17,
+            23
+        ],
+        "bonuses": {
+            "potatoes_spawn": 1
+        }
+    },
+    "20": {
+        "id": "20",
+        "pet_ids": [
+            16,
+            27,
+            37
+        ],
+        "bonuses": {
+            "potatoes_spawn": 1
+        }
+    },
+    "21": {
+        "id": "21",
+        "pet_ids": [
+            2,
+            4
+        ],
+        "bonuses": {
+            "potatoes_per_wave": -3
+        }
+    },
+    "22": {
+        "id": "22",
+        "pet_ids": [
+            10,
+            16
+        ],
+        "bonuses": {
+            "potatoes_per_wave": -3
+        }
+    },
+    "23": {
+        "id": "23",
+        "pet_ids": [
+            1,
+            6,
+            7
+        ],
+        "bonuses": {
+            "potatoes_per_wave": -3
+        }
+    },
+    "24": {
+        "id": "24",
+        "pet_ids": [
+            3,
+            13,
+            21
+        ],
+        "bonuses": {
+            "potatoes_per_wave": -3
+        }
+    },
+    "25": {
+        "id": "25",
+        "pet_ids": [
+            14,
+            25,
+            33
+        ],
+        "bonuses": {
+            "potatoes_per_wave": -3
+        }
+    },
+    "26": {
+        "id": "26",
+        "pet_ids": [
+            1,
+            4
+        ],
+        "bonuses": {
+            "potatoes_spawn_speed": 3
+        }
+    },
+    "27": {
+        "id": "27",
+        "pet_ids": [
+            12,
+            14
+        ],
+        "bonuses": {
+            "potatoes_spawn_speed": 3
+        }
+    },
+    "28": {
+        "id": "28",
+        "pet_ids": [
+            3,
+            5,
+            8
+        ],
+        "bonuses": {
+            "potatoes_spawn_speed": 3
+        }
+    },
+    "29": {
+        "id": "29",
+        "pet_ids": [
+            11,
+            18,
+            29
+        ],
+        "bonuses": {
+            "potatoes_spawn_speed": 3
+        }
+    },
+    "30": {
+        "id": "30",
+        "pet_ids": [
+            19,
+            26,
+            35
+        ],
+        "bonuses": {
+            "potatoes_spawn_speed": 3
+        }
+    },
+    "31": {
+        "id": "31",
+        "pet_ids": [
+            31,
+            36,
+            39
+        ],
+        "bonuses": {
+            "expedition_reward": 0.1
+        }
+    },
+    "32": {
+        "id": "32",
+        "pet_ids": [
+            32,
+            42,
+            47
+        ],
+        "bonuses": {
+            "expedition_reward": 0.1
+        }
+    },
+    "33": {
+        "id": "33",
+        "pet_ids": [
+            24,
+            38,
+            45
+        ],
+        "bonuses": {
+            "expedition_reward": 0.1
+        }
+    },
+    "34": {
+        "id": "34",
+        "pet_ids": [
+            33,
+            37,
+            40
+        ],
+        "bonuses": {
+            "expedition_damage": 0.25
+        }
+    },
+    "35": {
+        "id": "35",
+        "pet_ids": [
+            35,
+            38,
+            49
+        ],
+        "bonuses": {
+            "expedition_damage": 0.25
+        }
+    },
+    "36": {
+        "id": "36",
+        "pet_ids": [
+            26,
+            41,
+            50
+        ],
+        "bonuses": {
+            "expedition_damage": 0.25
+        }
+    },
+    "37": {
+        "id": "37",
+        "pet_ids": [
+            21,
+            43
+        ],
+        "bonuses": {
+            "breed_timer": -0.1
+        }
+    },
+    "38": {
+        "id": "38",
+        "pet_ids": [
+            28,
+            39,
+            44
+        ],
+        "bonuses": {
+            "breed_timer": -0.1
+        }
+    },
+    "39": {
+        "id": "39",
+        "pet_ids": [
+            30,
+            41,
+            46
+        ],
+        "bonuses": {
+            "breed_timer": -0.1
+        }
+    },
+    "40": {
+        "id": "40",
+        "pet_ids": [
+            29,
+            44
+        ],
+        "bonuses": {
+            "milk_timer": -0.1
+        }
+    },
+    "41": {
+        "id": "41",
+        "pet_ids": [
+            30,
+            34,
+            43
+        ],
+        "bonuses": {
+            "milk_timer": -0.1
+        }
+    },
+    "42": {
+        "id": "42",
+        "pet_ids": [
+            23,
+            36,
+            42
+        ],
+        "bonuses": {
+            "milk_timer": -0.1
+        }
+    },
+    "43": {
+        "id": "43",
+        "pet_ids": [
+            21,
+            32
+        ],
+        "bonuses": {
+            "attack_speed": 0.2
+        }
+    },
+    "44": {
+        "id": "44",
+        "pet_ids": [
+            24,
+            31,
+            40
+        ],
+        "bonuses": {
+            "attack_speed": 0.2
+        }
+    },
+    "45": {
+        "id": "45",
+        "pet_ids": [
+            26,
+            45,
+            48
+        ],
+        "bonuses": {
+            "attack_speed": 0.2
+        }
+    },
+    "46": {
+        "id": "46",
+        "pet_ids": [
+            22,
+            48
+        ],
+        "bonuses": {
+            "whack_buff_duration": 0.2
+        }
+    },
+    "47": {
+        "id": "47",
+        "pet_ids": [
+            25,
+            46,
+            49
+        ],
+        "bonuses": {
+            "whack_buff_duration": 0.2
+        }
+    },
+    "48": {
+        "id": "48",
+        "pet_ids": [
+            27,
+            47,
+            50
+        ],
+        "bonuses": {
+            "whack_buff_duration": 0.2
+        }
+    }
+}
