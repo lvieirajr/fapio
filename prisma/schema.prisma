@@ -41,6 +41,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    farmerData    FarmerData?
 }
 
 model VerificationToken {
@@ -49,4 +50,25 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model FarmerData {
+    id              String @id @default(cuid())
+    userId          String @unique
+    user            User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+    farmerLevel     Int
+    smasherLevel    Int
+    hoerLevel       Int
+    harvesterLevel  Int
+    rancherLevel    Int
+    freeloaderLevel Int
+    ascensions      Int
+    challenges      Json
+    ascensionPerks  Json
+    infinityCorner  Json
+    soulShop        Json
+    whackShop       Json
+    cowFactoryShop  Json
+    expeditionShop  Json
+    pets            Json
 }
