@@ -11,7 +11,8 @@ const Fapio: NextPage = () => {
   }
 
   if (!session) {
-    void router.push(`/`)
+    void router.push(`/`);
+    return <main />;
   } else {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center">

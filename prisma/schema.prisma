@@ -53,22 +53,23 @@ model VerificationToken {
 }
 
 model FarmerData {
-    id              String @id @default(cuid())
-    userId          String @unique
-    user            User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-    farmerLevel     Int
-    smasherLevel    Int
-    hoerLevel       Int
-    harvesterLevel  Int
-    rancherLevel    Int
-    freeloaderLevel Int
-    ascensions      Int
-    challenges      Json
-    ascensionPerks  Json
-    infinityCorner  Json
-    soulShop        Json
-    whackShop       Json
-    cowFactoryShop  Json
-    expeditionShop  Json
-    pets            Json
+    id                 String @id @default(cuid())
+    userId             String @unique
+    user               User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+    farmerLevel        Int
+    smasherLevel       Int
+    hoerLevel          Int
+    harvesterLevel     Int
+    rancherLevel       Int
+    freeloaderLevel    Int
+    reincarnationLevel Int
+    ascensions         Int
+    challenges         Json
+    ascensionPerks     Json
+    infinityCorner     Json
+    soulShop           Json
+    whackShop          Json
+    cowFactoryShop     Json
+    expeditionShop     Json
+    pets               Json
 }

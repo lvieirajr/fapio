@@ -12,6 +12,7 @@ const Home: NextPage = () => {
 
   if (session && session.user) {
     void router.push(`/fapio/`)
+    return <main />;
   } else {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center">
