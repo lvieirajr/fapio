@@ -12,7 +12,7 @@
       }
     },
     "expedition": {
-      "damage": 2.5,
+      "damage": 10.0,
       "bonuses": {
         "potatoes": 0.05
       }
@@ -31,7 +31,7 @@
       }
     },
     "expedition": {
-      "damage": 2.5,
+      "damage": 10.0,
       "bonuses": {
         "class_exp": 0.05
       }
@@ -50,7 +50,7 @@
       }
     },
     "expedition": {
-      "damage": 2.0,
+      "damage": 8,
       "bonuses": {
         "skulls": 0.05
       }
@@ -69,7 +69,7 @@
       }
     },
     "expedition": {
-      "damage": 2.5,
+      "damage": 10.0,
       "bonuses": {
         "worm_quantity": 0.05
       }
@@ -88,7 +88,7 @@
       }
     },
     "expedition": {
-      "damage": 1.5,
+      "damage": 6,
       "bonuses": {
         "residue": 0.05,
         "card_chance": 0.025
@@ -108,7 +108,7 @@
       }
     },
     "expedition": {
-      "damage": 1.5,
+      "damage": 6,
       "bonuses": {
         "poop": 0.05,
         "reward": 0.05
@@ -129,7 +129,7 @@
       }
     },
     "expedition": {
-      "damage": 2.0,
+      "damage": 8,
       "bonuses": {
         "milk": 0.05,
         "damage": 0.05
@@ -150,7 +150,7 @@
       }
     },
     "expedition": {
-      "damage": 2.0,
+      "damage": 8,
       "bonuses": {
         "larva_quantity": 0.05,
         "time": 0.025
@@ -171,7 +171,7 @@
       }
     },
     "expedition": {
-      "damage": 2.5,
+      "damage": 10.0,
       "bonuses": {
         "whack_score": 0.05,
         "reward": 0.05
@@ -192,7 +192,7 @@
       }
     },
     "expedition": {
-      "damage": 3.0,
+      "damage": 12.0,
       "bonuses": {
         "skulls": 0.05,
         "damage": 0.05
@@ -213,7 +213,7 @@
       }
     },
     "expedition": {
-      "damage": 2.5,
+      "damage": 10.0,
       "bonuses": {
         "poop": 0.05,
         "reward": 0.05
@@ -234,7 +234,7 @@
       }
     },
     "expedition": {
-      "damage": 3.0,
+      "damage": 12.0,
       "bonuses": {
         "worm_quantity": 0.05,
         "damage": 0.05
@@ -255,7 +255,7 @@
       }
     },
     "expedition": {
-      "damage": 2.0,
+      "damage": 8,
       "bonuses": {
         "potatoes": 0.05,
         "card_chance": 0.025
@@ -276,7 +276,7 @@
       }
     },
     "expedition": {
-      "damage": 3.0,
+      "damage": 12.0,
       "bonuses": {
         "class_exp": 0.05,
         "time": 0.025
@@ -297,7 +297,7 @@
       }
     },
     "expedition": {
-      "damage": 1.5,
+      "damage": 6,
       "bonuses": {
         "card_power": 0.025,
         "card_chance": 0.025
@@ -318,7 +318,7 @@
       }
     },
     "expedition": {
-      "damage": 2.5,
+      "damage": 10.0,
       "bonuses": {
         "larva_quantity": 0.05,
         "reward": 0.05
@@ -339,7 +339,7 @@
       }
     },
     "expedition": {
-      "damage": 2.5,
+      "damage": 10.0,
       "bonuses": {
         "whack_score": 0.05,
         "time": 0.025
@@ -360,7 +360,7 @@
       }
     },
     "expedition": {
-      "damage": 3.5,
+      "damage": 14.0,
       "bonuses": {
         "milk": 0.05,
         "damage": 0.05
@@ -381,7 +381,7 @@
       }
     },
     "expedition": {
-      "damage": 1.5,
+      "damage": 6,
       "bonuses": {
         "residue": 0.05,
         "card_chance": 0.025,
@@ -404,7 +404,7 @@
       }
     },
     "expedition": {
-      "damage": 2.5,
+      "damage": 10.0,
       "bonuses": {
         "potatoes": 0.05,
         "class_exp": 0.05,
@@ -427,7 +427,7 @@
       }
     },
     "expedition": {
-      "damage": 3.0,
+      "damage": 12.0,
       "bonuses": {
         "card_power": 0.025,
         "worm_quantity": 0.05,
@@ -450,7 +450,7 @@
       }
     },
     "expedition": {
-      "damage": 3.0,
+      "damage": 12.0,
       "bonuses": {
         "potatoes": 0.05,
         "card_chance": 0.025,
@@ -473,7 +473,7 @@
       }
     },
     "expedition": {
-      "damage": 2.5,
+      "damage": 10.0,
       "bonuses": {
         "class_exp": 0.05,
         "milk": 0.05,
@@ -496,7 +496,7 @@
       }
     },
     "expedition": {
-      "damage": 4.0,
+      "damage": 16.0,
       "bonuses": {
         "potatoes": 0.05,
         "poop": 0.05,
@@ -519,7 +519,7 @@
       }
     },
     "expedition": {
-      "damage": 3.5,
+      "damage": 14.0,
       "bonuses": {
         "skulls": 0.05,
         "whack_score": 0.05,
@@ -542,7 +542,7 @@
       }
     },
     "expedition": {
-      "damage": 4.0,
+      "damage": 16.0,
       "bonuses": {
         "worm_quantity": 0.05,
         "larva_quantity": 0.05,
@@ -566,7 +566,7 @@
       }
     },
     "expedition": {
-      "damage": 4.5,
+      "damage": 18.0,
       "bonuses": {
         "card_power": 0.025,
         "damage": 0.1,
@@ -590,7 +590,7 @@
       }
     },
     "expedition": {
-      "damage": 3.5,
+      "damage": 14.0,
       "bonuses": {
         "class_exp": 0.05,
         "poop": 0.05,
@@ -614,7 +614,7 @@
       }
     },
     "expedition": {
-      "damage": 4.0,
+      "damage": 16.0,
       "bonuses": {
         "reward": 0.05,
         "reincarnation": 0.025,
@@ -638,7 +638,7 @@
       }
     },
     "expedition": {
-      "damage": 5.0,
+      "damage": 20.0,
       "bonuses": {
         "skulls": 0.05,
         "residue": 0.05,
@@ -660,7 +660,7 @@
       }
     },
     "expedition": {
-      "damage": 3.0,
+      "damage": 12.0,
       "bonuses": {
         "milk": 0.05,
         "skulls": 0.05
@@ -681,7 +681,7 @@
       }
     },
     "expedition": {
-      "damage": 2.5,
+      "damage": 10.0,
       "bonuses": {
         "card_chance": 0.025,
         "time": 0.05
@@ -702,7 +702,7 @@
       }
     },
     "expedition": {
-      "damage": 3.5,
+      "damage": 14.0,
       "bonuses": {
         "poop": 0.05,
         "larva_quantity": 0.05
@@ -723,7 +723,7 @@
       }
     },
     "expedition": {
-      "damage": 3.0,
+      "damage": 12.0,
       "bonuses": {
         "residue": 0.05,
         "reward": 0.05
@@ -744,7 +744,7 @@
       }
     },
     "expedition": {
-      "damage": 3.5,
+      "damage": 14.0,
       "bonuses": {
         "class_exp": 0.05,
         "worm_quantity": 0.05
@@ -765,7 +765,7 @@
       }
     },
     "expedition": {
-      "damage": 4.0,
+      "damage": 16.0,
       "bonuses": {
         "reincarnation": 0.025,
         "whack_score": 0.05
@@ -786,7 +786,7 @@
       }
     },
     "expedition": {
-      "damage": 3.0,
+      "damage": 12.0,
       "bonuses": {
         "card_power": 0.025,
         "poop": 0.05
@@ -807,7 +807,7 @@
       }
     },
     "expedition": {
-      "damage": 4.0,
+      "damage": 16.0,
       "bonuses": {
         "tokens": 0.05,
         "milk": 0.05
@@ -829,7 +829,7 @@
       }
     },
     "expedition": {
-      "damage": 3.5,
+      "damage": 14.0,
       "bonuses": {
         "worm_quantity": 0.05,
         "potatoes": 0.05,
@@ -852,7 +852,7 @@
       }
     },
     "expedition": {
-      "damage": 4.0,
+      "damage": 16.0,
       "bonuses": {
         "reincarnation": 0.025,
         "card_power": 0.025,
@@ -875,7 +875,7 @@
       }
     },
     "expedition": {
-      "damage": 3.0,
+      "damage": 12.0,
       "bonuses": {
         "larva_quantity": 0.05,
         "class_exp": 0.05,
@@ -898,7 +898,7 @@
       }
     },
     "expedition": {
-      "damage": 3.5,
+      "damage": 14.0,
       "bonuses": {
         "tokens": 0.05,
         "residue": 0.05,
@@ -921,7 +921,7 @@
       }
     },
     "expedition": {
-      "damage": 3.0,
+      "damage": 12.0,
       "bonuses": {
         "potatoes": 0.05,
         "whack_score": 0.05,
@@ -944,7 +944,7 @@
       }
     },
     "expedition": {
-      "damage": 4.5,
+      "damage": 18.0,
       "bonuses": {
         "reincarnation": 0.025,
         "skulls": 0.05,
@@ -967,7 +967,7 @@
       }
     },
     "expedition": {
-      "damage": 4.0,
+      "damage": 16.0,
       "bonuses": {
         "larva_quantity": 0.05,
         "milk": 0.05,
@@ -990,7 +990,7 @@
       }
     },
     "expedition": {
-      "damage": 4.0,
+      "damage": 16.0,
       "bonuses": {
         "tokens": 0.05,
         "damage": 0.1,
@@ -1013,7 +1013,7 @@
       }
     },
     "expedition": {
-      "damage": 3.5,
+      "damage": 14.0,
       "bonuses": {
         "skulls": 0.05,
         "whack_score": 0.05,
@@ -1036,7 +1036,7 @@
       }
     },
     "expedition": {
-      "damage": 4.5,
+      "damage": 18.0,
       "bonuses": {
         "reincarnation": 0.025,
         "residue": 0.05,
@@ -1059,7 +1059,7 @@
       }
     },
     "expedition": {
-      "damage": 4.0,
+      "damage": 16.0,
       "bonuses": {
         "tokens": 0.05,
         "poop": 0.05,
@@ -1082,7 +1082,7 @@
       }
     },
     "expedition": {
-      "damage": 5.0,
+      "damage": 20.0,
       "bonuses": {
         "reincarnation": 0.025,
         "tokens": 0.05,
