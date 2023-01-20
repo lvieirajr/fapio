@@ -6,7 +6,13 @@ export const farmerRouter = createTRPCRouter({
   getFarmer: publicProcedure
     .input(z.object({}))
     .query(({ ctx }) => {
-      return ctx.prisma.farmer.findUnique({where: {userId: ctx.session?.user?.id}});
+      return ctx.prisma.farmer.findUnique({where: {userId: ctx.session?.user?.id}}).then((farmer) => {
+        return farmer;
+      }).catch((reason) => {
+        console.log(reason);
+        return null;
+      })
+
     }),
   loadSave: protectedProcedure
     .input(z.object({saveData: z.string()}))

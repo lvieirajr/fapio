@@ -1,10 +1,12 @@
 import { type FC, type ChangeEvent, Fragment } from "react";
 import { ungzip } from "node-gzip";
+import { useRouter } from "next/router";
 import Button from "@mui/material/Button";
 
 import { api } from "../../utils/api";
 
 const UploadSaveButton: FC = () => {
+  const router = useRouter();
   const loadSaveMutation = api.farmer.loadSave.useMutation();
 
   const loadSave = (event: ChangeEvent<HTMLInputElement>) => {
@@ -20,6 +22,8 @@ const UploadSaveButton: FC = () => {
           loadSaveMutation.mutate({
             saveData: saveDataString.substring(0, saveDataString.lastIndexOf("}") + 1),
           });
+
+          router.reload();
         });
       }
     };

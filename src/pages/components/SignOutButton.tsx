@@ -6,7 +6,11 @@ import Logout from '@mui/icons-material/Logout';
 const SignOutButton: FC = () => {
   return (
     <Fragment>
-      <IconButton color="error" sx={{ ml: 4 }} onClick={() => void signOut()}>
+      <IconButton
+        color="error"
+        sx={{ ml: 4 }}
+        onClick={() => void signOut({ callbackUrl: "/" })}
+      >
         <Logout />
       </IconButton>
     </Fragment>
