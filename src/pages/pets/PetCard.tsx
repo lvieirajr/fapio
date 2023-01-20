@@ -16,7 +16,7 @@ interface PetCardProps {
   captured: boolean,
   rank: number,
   level: number,
-};
+}
 
 const PetCard: FC<PetCardProps> = (props) => {
   return (
