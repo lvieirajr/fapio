@@ -1,6 +1,10 @@
 import { type NextPage } from "next";
-import { useRouter } from 'next/router'
-import {signIn, useSession} from "next-auth/react";
+import { useRouter } from "next/router"
+import { signIn, useSession } from "next-auth/react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Image from "next/image"
 
 const Home: NextPage = () => {
   const { data: session, status: sessionStatus } = useSession();
@@ -11,20 +15,30 @@ const Home: NextPage = () => {
   }
 
   if (session && session.user) {
-    void router.push(`/fapio/`)
+    void router.push(`/expedition/`);
     return <main />;
   } else {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center">
-        <img className="justify-center align-center mb-4 py-4 px-2" src="/fapi.png" />
-
-        <button
-          className="justify-center rounded-md border border-transparent bg-indigo-500 mt-4 py-4 px-8 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          onClick={() => void signIn()}
+      <Container component="main" maxWidth="xs">
+        <Box
+          sx={{
+            marginTop: 12,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
         >
-          Sign in with Discord
-        </button>
-      </main>
+          <Image src="/logo.png" alt="logo" width={400} height={200} />
+          <Button
+              fullWidth
+              variant="contained"
+              sx={{ mt: 6, mb: 2 }}
+              onClick={() => void signIn()}
+            >
+              Sign In With Discord
+          </Button>
+        </Box>
+      </Container>
     );
   }
 
