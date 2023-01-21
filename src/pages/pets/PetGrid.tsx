@@ -1,8 +1,4 @@
 import { type FC, Fragment } from "react";
-import Container from "@mui/material/Container"
-import Grid from "@mui/material/Grid";
-
-import PetCard from "./PetCard";
 
 import { type PetType } from "../../types/pets";
 
@@ -11,8 +7,6 @@ interface PetGridProps {
 }
 
 const PetGrid: FC<PetGridProps> = (props) => {
-  const { pets } = props;
-
   return (
     <Fragment>
     </Fragment>

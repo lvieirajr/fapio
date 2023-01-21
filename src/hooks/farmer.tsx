@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
-import { api } from "../../utils/api";
+import { api } from "../utils/api";
 
 
 export const useFarmer = () => {
@@ -14,13 +14,13 @@ export const useFarmer = () => {
     if (sessionStatus !== "loading" && !session) {
       void router.push("/");
     }
-  }, [session]);
+  }, [sessionStatus, session, router]);
 
   useEffect(() => {
     if (session && !farmer.isLoading && !farmer.data) {
       void router.push("/save");
     }
-  }, [session, farmer]);
+  }, [session, farmer, router]);
 
   return {session, farmer};
 };

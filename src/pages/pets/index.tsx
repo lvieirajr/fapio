@@ -1,50 +1,41 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { type NextPage } from "next";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
 import NavBar from "../components/NavBar";
-import PetGrid from "./PetGrid";
-
-import { useFarmer } from "../hooks/farmer";
 import { type PetType } from "../../types/pets";
+import { useFarmer } from "../../hooks/farmer";
+import { usePets } from "../../hooks/pets";
+import { calculateOptimalTeam } from "./expeditionOptimization";
 
-import petsJson from "../../../public/pets/pets.json";
+interface TeamType {
+  pets: Array<PetType>,
+  damage: number,
+}
 
 const Pets: NextPage = () => {
+  const [team, setTeam] = useState<TeamType>({pets: [], damage: 0})
   const { session, farmer } = useFarmer();
+  const pets = usePets(farmer.data);
+
+  useEffect(() => {
+    if (farmer.data && pets) {
+      const [optimalTeam, optimalTeamDamage] = calculateOptimalTeam(
+        pets,
+        farmer.data.equippedPets as Array<number>,
+      );
+
+      setTeam({
+        "pets": optimalTeam as Array<PetType>,
+        "damage": optimalTeamDamage as number,
+      });
+    }
+  }, [farmer, pets]);
 
   if (!session || !farmer.data) {
     return <main />;
   }
-
-  const pets: Array<PetType> = [];
-  Object.entries(petsJson).forEach((entry) => {
-    const [petId, pet] = entry;
-
-    pets.push({
-      "id": +petId,
-      "name": pet["name"],
-      "location": pet["location"],
-      "type": pet["type"],
-      "rarity": pet["rarity"],
-      "pity": pet["pity"],
-      "damage": pet["damage"] as number,
-      "bonuses": pet["bonuses"] as { [key: string]: number },
-      "captured": false,
-      "rank": 0,
-      "level": 0,
-    });
-  });
-
-  const farmerPets = farmer?.data?.pets as object;
-  pets.forEach((pet) => {
-    if (pet["id"] in farmerPets){
-      pet["captured"] = true;
-      pet["rank"] = +farmerPets[pet["id"] as keyof object]["rank"];
-      pet["level"] = +farmerPets[pet["id"] as keyof object]["level"];
-    }
-  });
 
   return (
     <Fragment>
@@ -62,7 +53,12 @@ const Pets: NextPage = () => {
           </Typography>
         </Container>
         <Container sx={{ py: 4 }} maxWidth="md">
-          <PetGrid pets={pets} />
+          <Fragment>
+            <p>This is your optimal expedition team and it deals {Math.round(team.damage)} damage per hour.</p>
+            {team.pets.map((pet) => (
+              <img src={`/pets/${pet.name}.png`} key={pet.id} />
+            ))}
+          </Fragment>
         </Container>
       </main>
     </Fragment>

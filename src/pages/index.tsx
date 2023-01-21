@@ -15,7 +15,7 @@ const Home: NextPage = () => {
     if (session && sessionStatus) {
       void router.push("/pets");
     }
-  }, [sessionStatus]);
+  }, [sessionStatus, session, router]);
 
   if (sessionStatus === "loading" || session) {
     return <main />;

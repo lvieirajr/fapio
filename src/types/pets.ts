@@ -5,9 +5,10 @@ export interface PetType {
   type: string,
   rarity: number,
   pity: number | null,
-  damage: number,
+  baseDamage: number,
   bonuses: { [key: string]: number },
   captured: boolean,
   rank: number,
   level: number,
+  totalDamage: number,
 }

@@ -1,0 +1,793 @@
+{
+  "1": {
+    "id": "1",
+    "name": "Cocorico",
+    "location": "3-2",
+    "type": "Ground",
+    "rarity": 1,
+    "pity": null,
+    "damage": 10,
+    "bonuses": {
+      "potatoes": 0.005,
+      "expedition_potatoes": 0.05
+    }
+  },
+  "2": {
+    "id": "2",
+    "name": "Rico",
+    "location": "3-2",
+    "type": "Air",
+    "rarity": 1,
+    "pity": 500000,
+    "damage": 10,
+    "bonuses": {
+      "class_exp": 0.005,
+      "expedition_class_exp": 0.05
+    }
+  },
+  "3": {
+    "id": "3",
+    "name": "Trevor",
+    "location": "3-3",
+    "type": "Ground",
+    "rarity": 2,
+    "pity": 1500000,
+    "damage": 8,
+    "bonuses": {
+      "skulls": 0.0025,
+      "expedition_skulls": 0.05
+    }
+  },
+  "4": {
+    "id": "4",
+    "name": "Bingo",
+    "location": "3-4",
+    "type": "Air",
+    "rarity": 1,
+    "pity": 1000000,
+    "damage": 10,
+    "bonuses": {
+      "confection_exp": 0.005,
+      "expedition_worms": 0.05
+    }
+  },
+  "5": {
+    "id": "5",
+    "name": "Primfeet",
+    "location": "3-6",
+    "type": "Ground",
+    "rarity": 4,
+    "pity": 2000000,
+    "damage": 6,
+    "bonuses": {
+      "reincarnation_exp": 0.0005,
+      "expedition_residue": 0.05,
+      "expedition_card_chance": 0.025
+    }
+  },
+  "6": {
+    "id": "6",
+    "name": "Nidhogg",
+    "location": "4-1",
+    "type": "Air",
+    "rarity": 3,
+    "pity": 5000000,
+    "damage": 6,
+    "bonuses": {
+      "item_rating": 0.001,
+      "expedition_poop": 0.05,
+      "expedition_rewards": 0.05
+    }
+  },
+  "7": {
+    "id": "7",
+    "name": "Vidar",
+    "location": "3-5",
+    "type": "Ground",
+    "rarity": 1,
+    "pity": 1500000,
+    "damage": 8,
+    "bonuses": {
+      "poop": 0.005,
+      "potatoes": 0.005,
+      "expedition_milk": 0.05,
+      "expedition_damage": 0.05
+    }
+  },
+  "8": {
+    "id": "8",
+    "name": "Hiko",
+    "location": "3-7",
+    "type": "Air",
+    "rarity": 2,
+    "pity": 2000000,
+    "damage": 8,
+    "bonuses": {
+      "milk": 0.0025,
+      "skulls": 0.0025,
+      "expedition_larvae": 0.05,
+      "expedition_time": 0.025
+    }
+  },
+  "9": {
+    "id": "9",
+    "name": "Murphy",
+    "location": "3-8",
+    "type": "Ground",
+    "rarity": 1,
+    "pity": 3000000,
+    "damage": 10,
+    "bonuses": {
+      "whack_score": 0.005,
+      "confection_exp": 0.005,
+      "expedition_whack_score": 0.05,
+      "expedition_rewards": 0.05
+    }
+  },
+  "10": {
+    "id": "10",
+    "name": "Aphrodite",
+    "location": "3-9",
+    "type": "Air",
+    "rarity": 4,
+    "pity": 10000000,
+    "damage": 12,
+    "bonuses": {
+      "residue": 0.0005,
+      "poop": 0.005,
+      "expedition_skulls": 0.05,
+      "expedition_damage": 0.05
+    }
+  },
+  "11": {
+    "id": "11",
+    "name": "Nuts",
+    "location": "4-2",
+    "type": "Ground",
+    "rarity": 3,
+    "pity": 5000000,
+    "damage": 10,
+    "bonuses": {
+      "calcium_exp": 0.001,
+      "item_rating": 0.001,
+      "expedition_poop": 0.05,
+      "expedition_rewards": 0.05
+    }
+  },
+  "12": {
+    "id": "12",
+    "name": "Alvin",
+    "location": "4-7",
+    "type": "Air",
+    "rarity": 2,
+    "pity": 10000000,
+    "damage": 12,
+    "bonuses": {
+      "fermenting_exp": 0.001,
+      "milk": 0.0025,
+      "expedition_worms": 0.05,
+      "expedition_damage": 0.05
+    }
+  },
+  "13": {
+    "id": "13",
+    "name": "Flash",
+    "location": "4-4",
+    "type": "Ground",
+    "rarity": 2,
+    "pity": 5000000,
+    "damage": 8,
+    "bonuses": {
+      "brewing_exp": 0.0025,
+      "class_exp": 0.005,
+      "expedition_potatoes": 0.05,
+      "expedition_card_chance": 0.025
+    }
+  },
+  "14": {
+    "id": "14",
+    "name": "Cid",
+    "location": "4-3",
+    "type": "Air",
+    "rarity": 1,
+    "pity": 10000000,
+    "damage": 12,
+    "bonuses": {
+      "worms": 0.0025,
+      "whack_score": 0.005,
+      "expedition_class_exp": 0.05,
+      "expedition_time": 0.025
+    }
+  },
+  "15": {
+    "id": "15",
+    "name": "Tango",
+    "location": "4-5",
+    "type": "Ground",
+    "rarity": 4,
+    "pity": 20000000,
+    "damage": 6,
+    "bonuses": {
+      "larvae": 0.0025,
+      "reincarnation_exp": 0.0005,
+      "expedition_card_power": 0.025,
+      "expedition_card_chance": 0.025
+    }
+  },
+  "16": {
+    "id": "16",
+    "name": "Darti",
+    "location": "4-6",
+    "type": "Air",
+    "rarity": 2,
+    "pity": 15000000,
+    "damage": 10,
+    "bonuses": {
+      "larva_efficiency": 0.001,
+      "brewing_exp": 0.0025,
+      "expedition_larvae": 0.05,
+      "expedition_rewards": 0.05
+    }
+  },
+  "17": {
+    "id": "17",
+    "name": "Arizona",
+    "location": "4-9",
+    "type": "Ground",
+    "rarity": 4,
+    "pity": 40000000,
+    "damage": 10,
+    "bonuses": {
+      "residue": 0.0005,
+      "calcium_exp": 0.001,
+      "expedition_whack_score": 0.05,
+      "expedition_time": 0.025
+    }
+  },
+  "18": {
+    "id": "18",
+    "name": "Suijin",
+    "location": "5-1",
+    "type": "Air",
+    "rarity": 2,
+    "pity": 20000000,
+    "damage": 14,
+    "bonuses": {
+      "fermenting_exp": 0.001,
+      "worms": 0.0025,
+      "expedition_milk": 0.05,
+      "expedition_damage": 0.05
+    }
+  },
+  "19": {
+    "id": "19",
+    "name": "Johny Be Good",
+    "location": "4-8",
+    "type": "Ground",
+    "rarity": 2,
+    "pity": 20000000,
+    "damage": 6,
+    "bonuses": {
+      "larvae": 0.0025,
+      "larva_efficiency": 0.001,
+      "expedition_residue": 0.05,
+      "expedition_card_chance": 0.025,
+      "expedition_card_power": 0.025
+    }
+  },
+  "20": {
+    "id": "20",
+    "name": "Nucifera",
+    "location": "5-2",
+    "type": "Air",
+    "rarity": 1,
+    "pity": 40000000,
+    "damage": 10,
+    "bonuses": {
+      "potatoes": 0.005,
+      "class_exp": 0.005,
+      "skulls": 0.0025,
+      "expedition_potatoes": 0.05,
+      "expedition_class_exp": 0.05,
+      "expedition_skulls": 0.05
+    }
+  },
+  "21": {
+    "id": "21",
+    "name": "Barney",
+    "location": "5-3",
+    "type": "Ground",
+    "rarity": 1,
+    "pity": 20000000,
+    "damage": 12,
+    "bonuses": {
+      "poop": 0.005,
+      "whack_score": 0.005,
+      "larvae": 0.0025,
+      "expedition_card_power": 0.025,
+      "expedition_worms": 0.05,
+      "expedition_reincarnation_points": 0.025
+    }
+  },
+  "22": {
+    "id": "22",
+    "name": "Seth",
+    "location": "5-4",
+    "type": "Air",
+    "rarity": 3,
+    "pity": 25000000,
+    "damage": 12,
+    "bonuses": {
+      "class_exp": 0.005,
+      "confection_exp": 0.005,
+      "fermenting_exp": 0.001,
+      "expedition_potatoes": 0.05,
+      "expedition_card_chance": 0.025,
+      "expedition_tokens": 0.05
+    }
+  },
+  "23": {
+    "id": "23",
+    "name": "Plyne",
+    "location": "5-5",
+    "type": "Ground",
+    "rarity": 2,
+    "pity": 45000000,
+    "damage": 10,
+    "bonuses": {
+      "skulls": 0.0025,
+      "calcium_exp": 0.001,
+      "residue": 0.0005,
+      "expedition_class_exp": 0.05,
+      "expedition_milk": 0.05,
+      "expedition_rewards": 0.05
+    }
+  },
+  "24": {
+    "id": "24",
+    "name": "Zac",
+    "location": "5-6",
+    "type": "Air",
+    "rarity": 3,
+    "pity": 25000000,
+    "damage": 16,
+    "bonuses": {
+      "potatoes": 0.005,
+      "milk": 0.0025,
+      "worms": 0.0025,
+      "expedition_potatoes": 0.05,
+      "expedition_poop": 0.05,
+      "expedition_damage": 0.1
+    }
+  },
+  "25": {
+    "id": "25",
+    "name": "Tock",
+    "location": "5-7",
+    "type": "Ground",
+    "rarity": 1,
+    "pity": 25000000,
+    "damage": 14,
+    "bonuses": {
+      "class_exp": 0.005,
+      "item_rating": 0.001,
+      "fermenting_exp": 0.001,
+      "expedition_skulls": 0.05,
+      "expedition_whack_score": 0.05,
+      "expedition_card_chance": 0.025
+    }
+  },
+  "26": {
+    "id": "26",
+    "name": "The Governess",
+    "location": "5-8",
+    "type": "Air",
+    "rarity": 2,
+    "pity": 30000000,
+    "damage": 16,
+    "bonuses": {
+      "poop": 0.005,
+      "brewing_exp": 0.0025,
+      "larvae": 0.0025,
+      "expedition_worms": 0.05,
+      "expedition_larvae": 0.05,
+      "expedition_residue": 0.05
+    }
+  },
+  "27": {
+    "id": "27",
+    "name": "Swamp King",
+    "location": "5-9",
+    "type": "Ground",
+    "rarity": 3,
+    "pity": 60000000,
+    "damage": 18,
+    "bonuses": {
+      "skulls": 0.0025,
+      "reincarnation_exp": 0.0005,
+      "residue": 0.0005,
+      "larva_efficiency": 0.001,
+      "expedition_card_power": 0.025,
+      "expedition_damage": 0.1,
+      "expedition_reincarnation_points": 0.025
+    }
+  },
+  "28": {
+    "id": "28",
+    "name": "Itzamna",
+    "location": "6-1",
+    "type": "Air",
+    "rarity": 2,
+    "pity": 30000000,
+    "damage": 14,
+    "bonuses": {
+      "potatoes": 0.005,
+      "confection_exp": 0.005,
+      "whack_score": 0.005,
+      "worms": 0.0025,
+      "expedition_class_exp": 0.05,
+      "expedition_poop": 0.05,
+      "expedition_time": 0.05
+    }
+  },
+  "29": {
+    "id": "29",
+    "name": "Julian",
+    "location": "6-2",
+    "type": "Ground",
+    "rarity": 2,
+    "pity": 80000000,
+    "damage": 16,
+    "bonuses": {
+      "reincarnation_exp": 0.0005,
+      "item_rating": 0.001,
+      "fermenting_exp": 0.001,
+      "residue": 0.0005,
+      "expedition_rewards": 0.05,
+      "expedition_reincarnation_points": 0.025,
+      "expedition_tokens": 0.05
+    }
+  },
+  "30": {
+    "id": "30",
+    "name": "Yuhuang",
+    "location": "6-3",
+    "type": "Air",
+    "rarity": 1,
+    "pity": 35000000,
+    "damage": 20,
+    "bonuses": {
+      "class_exp": 0.005,
+      "skulls": 0.0025,
+      "milk": 0.0025,
+      "brewing_exp": 0.0025,
+      "expedition_skulls": 0.05,
+      "expedition_residue": 0.05,
+      "expedition_damage": 0.1
+    }
+  },
+  "31": {
+    "id": "31",
+    "name": "Serket",
+    "location": "E1C",
+    "type": "Ground",
+    "rarity": 1,
+    "pity": 200,
+    "damage": 12,
+    "bonuses": {
+      "whack_score": 0.005,
+      "larvae": 0.0025,
+      "expedition_milk": 0.05,
+      "expedition_skulls": 0.05
+    }
+  },
+  "32": {
+    "id": "32",
+    "name": "Fujin",
+    "location": "E1R",
+    "type": "Air",
+    "rarity": 4,
+    "pity": 1000,
+    "damage": 10,
+    "bonuses": {
+      "potatoes": 0.005,
+      "reincarnation_exp": 0.0005,
+      "expedition_card_chance": 0.025,
+      "expedition_time": 0.05
+    }
+  },
+  "33": {
+    "id": "33",
+    "name": "Ulrich",
+    "location": "E2C",
+    "type": "Ground",
+    "rarity": 1,
+    "pity": 300,
+    "damage": 14,
+    "bonuses": {
+      "confection_exp": 0.005,
+      "calcium_exp": 0.001,
+      "expedition_poop": 0.05,
+      "expedition_larvae": 0.05
+    }
+  },
+  "34": {
+    "id": "34",
+    "name": "Huginn",
+    "location": "E2R",
+    "type": "Air",
+    "rarity": 2,
+    "pity": 1500,
+    "damage": 12,
+    "bonuses": {
+      "skulls": 0.0025,
+      "worms": 0.0025,
+      "expedition_residue": 0.05,
+      "expedition_rewards": 0.05
+    }
+  },
+  "35": {
+    "id": "35",
+    "name": "Esus",
+    "location": "E3C",
+    "type": "Ground",
+    "rarity": 1,
+    "pity": 400,
+    "damage": 14,
+    "bonuses": {
+      "poop": 0.005,
+      "milk": 0.0025,
+      "expedition_class_exp": 0.05,
+      "expedition_worms": 0.05
+    }
+  },
+  "36": {
+    "id": "36",
+    "name": "Hera",
+    "location": "E3R",
+    "type": "Air",
+    "rarity": 3,
+    "pity": 2000,
+    "damage": 16,
+    "bonuses": {
+      "brewing_exp": 0.0025,
+      "larva_efficiency": 0.001,
+      "expedition_reincarnation_points": 0.025,
+      "expedition_whack_score": 0.05
+    }
+  },
+  "37": {
+    "id": "37",
+    "name": "Asterios",
+    "location": "E4C",
+    "type": "Ground",
+    "rarity": 2,
+    "pity": 600,
+    "damage": 12,
+    "bonuses": {
+      "class_exp": 0.005,
+      "larvae": 0.0025,
+      "expedition_card_power": 0.025,
+      "expedition_poop": 0.05
+    }
+  },
+  "38": {
+    "id": "38",
+    "name": "Odile",
+    "location": "E4R",
+    "type": "Air",
+    "rarity": 3,
+    "pity": 3000,
+    "damage": 16,
+    "bonuses": {
+      "milk": 0.0025,
+      "fermenting_exp": 0.001,
+      "expedition_tokens": 0.05,
+      "expedition_milk": 0.05
+    }
+  },
+  "39": {
+    "id": "39",
+    "name": "Anubis",
+    "location": "E5C",
+    "type": "Ground",
+    "rarity": 3,
+    "pity": 2000,
+    "damage": 14,
+    "bonuses": {
+      "confection_exp": 0.005,
+      "item_rating": 0.001,
+      "brewing_exp": 0.0025,
+      "expedition_worms": 0.05,
+      "expedition_potatoes": 0.05,
+      "expedition_whack_score": 0.05
+    }
+  },
+  "40": {
+    "id": "40",
+    "name": "Garuda",
+    "location": "E5R",
+    "type": "Air",
+    "rarity": 4,
+    "pity": 10000,
+    "damage": 16,
+    "bonuses": {
+      "whack_score": 0.005,
+      "residue": 0.0005,
+      "worms": 0.0025,
+      "expedition_reincarnation_points": 0.025,
+      "expedition_card_power": 0.025,
+      "expedition_damage": 0.1
+    }
+  },
+  "41": {
+    "id": "41",
+    "name": "Tsukuyomi",
+    "location": "E6C",
+    "type": "Air",
+    "rarity": 1,
+    "pity": 1000,
+    "damage": 12,
+    "bonuses": {
+      "potatoes": 0.005,
+      "poop": 0.005,
+      "calcium_exp": 0.001,
+      "expedition_larvae": 0.05,
+      "expedition_class_exp": 0.05,
+      "expedition_worms": 0.05
+    }
+  },
+  "42": {
+    "id": "42",
+    "name": "Nanbozo",
+    "location": "E6R",
+    "type": "Ground",
+    "rarity": 3,
+    "pity": 5000,
+    "damage": 14,
+    "bonuses": {
+      "skulls": 0.0025,
+      "brewing_exp": 0.0025,
+      "larvae": 0.0025,
+      "expedition_tokens": 0.05,
+      "expedition_residue": 0.05,
+      "expedition_poop": 0.05
+    }
+  },
+  "43": {
+    "id": "43",
+    "name": "Ra",
+    "location": "E7C",
+    "type": "Air",
+    "rarity": 2,
+    "pity": 1200,
+    "damage": 12,
+    "bonuses": {
+      "class_exp": 0.005,
+      "fermenting_exp": 0.001,
+      "worms": 0.0025,
+      "expedition_potatoes": 0.05,
+      "expedition_whack_score": 0.05,
+      "expedition_card_power": 0.025
+    }
+  },
+  "44": {
+    "id": "44",
+    "name": "Vishnou",
+    "location": "E7R",
+    "type": "Ground",
+    "rarity": 4,
+    "pity": 6000,
+    "damage": 18,
+    "bonuses": {
+      "reincarnation_exp": 0.0005,
+      "item_rating": 0.001,
+      "larva_efficiency": 0.001,
+      "expedition_reincarnation_points": 0.025,
+      "expedition_skulls": 0.05,
+      "expedition_time": 0.05
+    }
+  },
+  "45": {
+    "id": "45",
+    "name": "Icare",
+    "location": "E8C",
+    "type": "Air",
+    "rarity": 1,
+    "pity": 1600,
+    "damage": 16,
+    "bonuses": {
+      "confection_exp": 0.005,
+      "milk": 0.0025,
+      "whack_score": 0.005,
+      "expedition_larvae": 0.05,
+      "expedition_milk": 0.05,
+      "expedition_residue": 0.05
+    }
+  },
+  "46": {
+    "id": "46",
+    "name": "Olaf",
+    "location": "E8R",
+    "type": "Ground",
+    "rarity": 2,
+    "pity": 8000,
+    "damage": 16,
+    "bonuses": {
+      "item_rating": 0.001,
+      "fermenting_exp": 0.001,
+      "residue": 0.0005,
+      "expedition_tokens": 0.05,
+      "expedition_damage": 0.1,
+      "expedition_milk": 0.05
+    }
+  },
+  "47": {
+    "id": "47",
+    "name": "Fafnir",
+    "location": "E9C",
+    "type": "Air",
+    "rarity": 1,
+    "pity": 2000,
+    "damage": 14,
+    "bonuses": {
+      "potatoes": 0.005,
+      "poop": 0.005,
+      "calcium_exp": 0.001,
+      "expedition_skulls": 0.05,
+      "expedition_whack_score": 0.05,
+      "expedition_time": 0.05
+    }
+  },
+  "48": {
+    "id": "48",
+    "name": "Quetzalcoalt",
+    "location": "E9R",
+    "type": "Ground",
+    "rarity": 3,
+    "pity": 10000,
+    "damage": 18,
+    "bonuses": {
+      "reincarnation_exp": 0.0005,
+      "residue": 0.0005,
+      "larva_efficiency": 0.001,
+      "expedition_reincarnation_points": 0.025,
+      "expedition_residue": 0.05,
+      "expedition_class_exp": 0.05
+    }
+  },
+  "49": {
+    "id": "49",
+    "name": "Professor Inderwind",
+    "location": "E10C",
+    "type": "Air",
+    "rarity": 2,
+    "pity": 6000,
+    "damage": 16,
+    "bonuses": {
+      "brewing_exp": 0.0025,
+      "calcium_exp": 0.001,
+      "worms": 0.0025,
+      "expedition_tokens": 0.05,
+      "expedition_poop": 0.05,
+      "expedition_larvae": 0.05
+    }
+  },
+  "50": {
+    "id": "50",
+    "name": "Dangun",
+    "location": "E10R",
+    "type": "Ground",
+    "rarity": 4,
+    "pity": 30000,
+    "damage": 20,
+    "bonuses": {
+      "reincarnation_exp": 0.0005,
+      "item_rating": 0.001,
+      "milk": 0.0025,
+      "expedition_reincarnation_points": 0.025,
+      "expedition_tokens": 0.05,
+      "expedition_rewards": 0.05
+    }
+  }
+}

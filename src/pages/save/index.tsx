@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 
 import NavBar from "../components/NavBar";
 
-import { useFarmer } from "../hooks/farmer";
+import { useFarmer } from "../../hooks/farmer";
 
 const Save: NextPage = () => {
   const { session, farmer } = useFarmer();
@@ -16,7 +16,7 @@ const Save: NextPage = () => {
     if (farmer.data) {
       void router.push("/pets");
     }
-  }, [farmer]);
+  }, [farmer, router]);
 
   if (!session || farmer.isLoading || farmer.data) {
     return <main />;
