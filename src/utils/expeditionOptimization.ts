@@ -1,6 +1,6 @@
 import { combinations } from "combinatorial-generators";
 
-import { type PetType } from "../../types/pets";
+import { type PetType } from "../types/pets";
 
 
 export const calculateTeamDamage = (team: Array<PetType>) => {

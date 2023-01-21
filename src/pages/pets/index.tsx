@@ -8,7 +8,7 @@ import NavBar from "../components/NavBar";
 import { type PetType } from "../../types/pets";
 import { useFarmer } from "../../hooks/farmer";
 import { usePets } from "../../hooks/pets";
-import { calculateOptimalTeam } from "./expeditionOptimization";
+import { calculateOptimalTeam } from "../../utils/expeditionOptimization";
 
 interface TeamType {
   pets: Array<PetType>,
