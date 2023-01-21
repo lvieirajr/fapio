@@ -38,7 +38,7 @@ export const calculateOptimalTeam = (
   let optimalTeamDamage = 0;
 
   const availablePets = Object.values(pets).filter((pet) => {
-    return !(pet["id"] in equippedPets) && pet["captured"];
+    return pet["captured"] && !equippedPets.includes(pet["id"]);
   });
   const teamSize = Math.min(4, availablePets.length);
 
