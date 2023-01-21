@@ -2,6 +2,12 @@ import { z } from "zod";
 
 import {createTRPCRouter, protectedProcedure, publicProcedure} from "../trpc";
 
+interface Pet {
+  id: number,
+  level: number,
+  rank: number,
+}
+
 export const farmerRouter = createTRPCRouter({
   getFarmer: publicProcedure
     .input(z.object({}))
@@ -19,14 +25,14 @@ export const farmerRouter = createTRPCRouter({
     .mutation(({ctx, input}) => {
       const saveData = JSON.parse(input.saveData) as object;
 
-      const pets: Array<object> = [];
+      const pets: { [key: number]: Pet } = {};
       (saveData["PetsCollection" as keyof object] as Array<object>).forEach((pet) => {
         if (pet["CaptureCurrent" as keyof object] > 0 || pet["ID" as keyof object] === 1) {
-          pets.push({
-            "id": pet["ID" as keyof object],
-            "level": pet["Level" as keyof object],
-            "rank": pet["Rank" as keyof object],
-          })
+          pets[+pet["ID" as keyof object]] = {
+            "id": +pet["ID" as keyof object],
+            "level": +pet["Level" as keyof object],
+            "rank": +pet["Rank" as keyof object],
+          }
         }
       });
 

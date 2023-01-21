@@ -1,13 +1,15 @@
 import { Fragment } from 'react';
 import { type NextPage } from "next";
 import Container from "@mui/material/Container";
-import Grid from '@mui/material/Grid';
 import Typography from "@mui/material/Typography";
 
 import NavBar from "../components/NavBar";
-import PetCard from "./PetCard";
+import PetGrid from "./PetGrid";
 
 import { useFarmer } from "../hooks/farmer";
+import { type PetType } from "../../types/pets";
+
+import petsJson from "../../../public/pets/pets.json";
 
 const Pets: NextPage = () => {
   const { session, farmer } = useFarmer();
@@ -15,6 +17,34 @@ const Pets: NextPage = () => {
   if (!session || !farmer.data) {
     return <main />;
   }
+
+  const pets: Array<PetType> = [];
+  Object.entries(petsJson).forEach((entry) => {
+    const [petId, pet] = entry;
+
+    pets.push({
+      "id": +petId,
+      "name": pet["name"],
+      "location": pet["location"],
+      "type": pet["type"],
+      "rarity": pet["rarity"],
+      "pity": pet["pity"],
+      "damage": pet["damage"] as number,
+      "bonuses": pet["bonuses"] as { [key: string]: number },
+      "captured": false,
+      "rank": 0,
+      "level": 0,
+    });
+  });
+
+  const farmerPets = farmer?.data?.pets as object;
+  pets.forEach((pet) => {
+    if (pet["id"] in farmerPets){
+      pet["captured"] = true;
+      pet["rank"] = +farmerPets[pet["id"] as keyof object]["rank"];
+      pet["level"] = +farmerPets[pet["id"] as keyof object]["level"];
+    }
+  });
 
   return (
     <Fragment>
@@ -31,30 +61,9 @@ const Pets: NextPage = () => {
             Pets
           </Typography>
         </Container>
-        {farmer.data &&
-          <Container sx={{py: 4}} maxWidth="md">
-            <Grid container spacing={2}>
-              {(farmer.data.pets as Array<object>)?.map((pet) => (
-                <Grid item key={pet["id" as keyof object]} xs={2} sm={2} md={2}>
-                  <PetCard
-                    id={1}
-                    name={"Cocorico"}
-                    location={"3-2"}
-                    type={"Ground"}
-                    rarity={1}
-                    pity={null}
-                    expeditionBaseDamage={10.0}
-                    equippedBonuses={{}}
-                    expeditionBonuses={{}}
-                    captured={false}
-                    rank={50}
-                    level={100}
-                  />
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        }
+        <Container sx={{ py: 4 }} maxWidth="md">
+          <PetGrid pets={pets} />
+        </Container>
       </main>
     </Fragment>
   );

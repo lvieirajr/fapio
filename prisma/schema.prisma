@@ -71,7 +71,7 @@ model Farmer {
   whackShop          Json   @default("{}")
   cowFactoryShop     Json   @default("{}")
   expeditionShop     Json   @default("{}")
-  pets               Json   @default("[]")
+  pets               Json   @default("{}")
   equippedPets       Json   @default("[]")
   user               User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

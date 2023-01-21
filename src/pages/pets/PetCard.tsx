@@ -1,31 +1,18 @@
 import { type FC, Fragment } from 'react';
 import Card from '@mui/material/Card';
-import CardContent from "@mui/material/CardContent";
 import CardMedia from '@mui/material/CardMedia';
 
-interface PetCardProps {
-  id: number,
-  name: string,
-  location: string,
-  type: string,
-  rarity: number,
-  pity: number | null,
-  expeditionBaseDamage: number,
-  equippedBonuses: object,
-  expeditionBonuses: object,
-  captured: boolean,
-  rank: number,
-  level: number,
-}
+import { type PetType } from "../../types/pets";
 
-const PetCard: FC<PetCardProps> = (props) => {
+const PetCard: FC<PetType> = (props) => {
   return (
     <Fragment>
-      <Card sx={{height: '100', display: 'flex', flexDirection: 'column'}}>
+      <Card sx={{maxWidth: 300, maxHeight: 400}}>
         <CardMedia
           component="img"
-          image={`/pets/Cocorico.png`}
-          alt="Cocorico"
+          image={`/pets/${props.name}.png`}
+          alt={props.name}
+          sx={{height: 150, display: 'flex', flexDirection: 'column' }}
         />
       </Card>
     </Fragment>
