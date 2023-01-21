@@ -14,9 +14,7 @@ export const farmerRouter = createTRPCRouter({
     .query(({ ctx }) => {
       return ctx.prisma.farmer.findUnique({where: {userId: ctx.session?.user?.id}}).then((farmer) => {
         return farmer;
-      }).catch((reason) => {
-        return null;
-      })
+      }).catch(() => { return null; })
 
     }),
   loadSave: protectedProcedure

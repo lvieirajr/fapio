@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
 import { type NextPage } from "next";
+import Image from "next/image";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
@@ -15,9 +16,10 @@ interface TeamType {
 }
 
 const Pets: NextPage = () => {
-  const [team, setTeam] = useState<TeamType>({pets: [], damage: 0})
+  const [team, setTeam] = useState<TeamType>({"pets": [], "damage": 0})
   const { session, farmer } = useFarmer();
   const pets = usePets(farmer.data);
+
 
   useEffect(() => {
     if (farmer.data && pets) {
@@ -31,7 +33,7 @@ const Pets: NextPage = () => {
         "damage": optimalTeamDamage as number,
       });
     }
-  }, [farmer, pets]);
+  }, [session, farmer, pets, team, setTeam]);
 
   if (!session || !farmer.data) {
     return <main />;
@@ -56,7 +58,7 @@ const Pets: NextPage = () => {
           <Fragment>
             <p>This is your optimal expedition team and it deals {Math.round(team.damage)} damage per hour.</p>
             {team.pets.map((pet) => (
-              <img src={`/pets/${pet.name}.png`} key={pet.id} />
+              <Image key={pet.id} src={`/pets/${pet.name}.png`} alt={pet.name} width={100} height={100} />
             ))}
           </Fragment>
         </Container>

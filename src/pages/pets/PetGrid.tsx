@@ -6,7 +6,7 @@ interface PetGridProps {
   pets: Array<PetType>,
 }
 
-const PetGrid: FC<PetGridProps> = (props) => {
+const PetGrid: FC<PetGridProps> = () => {
   return (
     <Fragment>
     </Fragment>
