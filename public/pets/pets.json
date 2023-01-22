@@ -91,7 +91,7 @@
       "poop": 0.005,
       "potatoes": 0.005,
       "expedition_milk": 0.05,
-      "expedition_damage": 0.05
+      "expedition_damage": 0.1
     }
   },
   "8": {
@@ -136,7 +136,7 @@
       "residue": 0.0005,
       "poop": 0.005,
       "expedition_skulls": 0.05,
-      "expedition_damage": 0.05
+      "expedition_damage": 0.1
     }
   },
   "11": {
@@ -166,7 +166,7 @@
       "fermenting_exp": 0.001,
       "milk": 0.0025,
       "expedition_worms": 0.05,
-      "expedition_damage": 0.05
+      "expedition_damage": 0.1
     }
   },
   "13": {
@@ -256,7 +256,7 @@
       "fermenting_exp": 0.001,
       "worms": 0.0025,
       "expedition_milk": 0.05,
-      "expedition_damage": 0.05
+      "expedition_damage": 0.1
     }
   },
   "19": {
