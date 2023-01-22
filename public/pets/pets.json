@@ -106,7 +106,7 @@
       "milk": 0.0025,
       "skulls": 0.0025,
       "expedition_larvae": 0.05,
-      "expedition_time": 0.025
+      "expedition_time": 0.05
     }
   },
   "9": {
@@ -196,7 +196,7 @@
       "worms": 0.0025,
       "whack_score": 0.005,
       "expedition_class_exp": 0.05,
-      "expedition_time": 0.025
+      "expedition_time": 0.05
     }
   },
   "15": {
@@ -241,7 +241,7 @@
       "residue": 0.0005,
       "calcium_exp": 0.001,
       "expedition_whack_score": 0.05,
-      "expedition_time": 0.025
+      "expedition_time": 0.05
     }
   },
   "18": {
