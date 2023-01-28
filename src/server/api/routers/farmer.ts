@@ -24,7 +24,7 @@ export const farmerRouter = createTRPCRouter({
 
       const pets: { [key: number]: Pet } = {};
       (saveData["PetsCollection" as keyof object] as Array<object>).forEach((pet) => {
-        if (pet["CaptureCurrent" as keyof object] > 0 || pet["ID" as keyof object] === 1) {
+        if (pet["Locked" as keyof object] == 1) {
           pets[+pet["ID" as keyof object]] = {
             "id": +pet["ID" as keyof object],
             "level": +pet["Level" as keyof object],
