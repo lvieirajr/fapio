@@ -15,7 +15,9 @@ const MissingFarmerPage: React.FC = () => {
             <br />
           </Typography>
           <Typography variant="h6" align="center" color="text.secondary" paragraph>
-            %APPDATA%\..\LocalLow\Oni Gaming\Farmer Against Potatoes Idle\fapi-save.txt
+            Steam: %APPDATA%\..\LocalLow\Oni Gaming\Farmer Against Potatoes Idle\fapi-save.txt
+            <br />
+            Mobile: /storage/emulated/0/Android/data/com.oninou.FAPI/files/fapi-save.txt
           </Typography>
         </Container>
       </main>
