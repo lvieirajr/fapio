@@ -6,6 +6,7 @@ import '@fontsource/roboto/700.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { QueryClientProvider } from '@tanstack/react-query';
+import { Analytics } from '@vercel/analytics/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <ThemeProvider theme={Theme}>
         <CssBaseline />
         <App />
+        {import.meta.env.VITE_API_URL !== 'development' && <Analytics />}
       </ThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>,

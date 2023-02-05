@@ -15,8 +15,6 @@ const MissingFarmerPage: React.FC = () => {
             <br />
           </Typography>
           <Typography variant="h6" align="center" color="text.secondary" paragraph>
-            It should be stored under:
-            <br />
             %APPDATA%\..\LocalLow\Oni Gaming\Farmer Against Potatoes Idle\fapi-save.txt
           </Typography>
         </Container>
