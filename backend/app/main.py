@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-main_router = APIRouter(prefix="/api")
+main_router = APIRouter(prefix="")
 main_router.include_router(farmer_router)
 main_router.include_router(expeditions_router)
 
