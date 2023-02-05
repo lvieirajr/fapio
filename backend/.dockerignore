@@ -1,0 +1,30 @@
+# Docker
+Dockerfile
+
+# Git
+.git
+.gitattributes
+.gitignore
+.github
+
+# Apple
+.DS_Store
+
+# IDEs
+.idea
+.project
+.vscode
+*.tmproj
+
+# Env files
+.env
+.env.sample
+
+# Certificates
+certificates/
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+.python-version

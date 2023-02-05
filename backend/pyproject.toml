@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "fapio"
+version = "1.0.0"
+description = "Farmer Against Potatoes Idle Optimizer"
+authors = ["Luis Vieira <lvieira@lvieira.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = {version = "^3.11"}
+fastapi = {version = "^0.89.1", python = "^3.11"}
+uvicorn = {version = "^0.20.0", python = "^3.11", extras = ["standard"]}
+sqlalchemy = {version = "^1.4.46", python = "^3.11"}
+alembic = {version = "^1.9.2", python = "^3.11"}
+psycopg2-binary = {version = "^2.9.5", python = "^3.11"}
+python-multipart = {version = "^0.0.5", python = "^3.11"}
+loguru = {version = "^0.6.0", python = "^3.11"}
+ipython = {version = "^8.9.0", python = "^3.11"}
+
+
+[tool.poetry.dev-dependencies]
+ipdb = {version = "^0.13.11", python = "^3.11"}
+safety = {version = "^2.3.5", python = "^3.11"}
+mypy = {version = "^0.991", python = "^3.11"}
+black = {version = "^22.12.0", python = "^3.11"}
+ruff = {version = "^0.0.236", python = "^3.11"}
+pytest = {version = "^7.2.1", python = "^3.11"}
+pytest-cov = {version = "^4.0.0", python = "^3.11"}
+pytest-mock = {version = "^3.10.0", python = "^3.11"}
+mock = {version = "^5.0.1", python = "^3.11"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.masonry.api"

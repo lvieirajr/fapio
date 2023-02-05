@@ -1,0 +1,57 @@
+version: "3.9"
+
+
+x-backend-defaults: &backend-defaults
+  build:
+    context: ./backend/
+    dockerfile: Dockerfile
+  image: lvieirajr/fapio-backend
+  stdin_open: true
+  tty: true
+  restart: unless-stopped
+  volumes:
+    - ./backend/:/app/:rw,cached
+
+x-backend-environment-defaults: &backend-environment-defaults
+  ENVIRONMENT: "development"
+
+
+services:
+  backend:
+    <<: *backend-defaults
+    environment:
+      <<: *backend-environment-defaults
+    container_name: backend
+    command: ./bin/backend-development.sh
+    ports:
+      - "443:443"
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data/:rw,cached
+    ports:
+      - "5432"
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - redis-volume:/tmp/redis/:rw,cached
+    ports:
+      - "6379"
+
+
+volumes:
+  postgres-volume:
+  redis-volume:
