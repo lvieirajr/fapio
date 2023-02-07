@@ -1,11 +1,14 @@
 from collections import Counter
 from itertools import combinations
 from functools import cache
-from typing import List, Tuple
+from typing import List
 
 from sqlalchemy.orm import Session
 
-from app.expeditions.schemas import ExpeditionOptimizationParameters
+from app.expeditions.schemas import (
+    ExpeditionOptimizationParameters,
+    OptimizedExpeditionTeam,
+)
 from app.farmer.repositories import FarmerRepository
 from app.pets.constants import PET_COMBOS
 
@@ -19,12 +22,12 @@ class ExpeditionOptimizer:
     ) -> None:
         self._farmer = FarmerRepository(db=db).get_one(farmer_id=parameters.farmer_id)
         self._equipped_pets = parameters.equipped_pets
-        self._objective = parameters.objective
+        self._objectives = parameters.objectives
 
         self._available_pets = {
             int(pet_id): {
                 **pet,
-                "total_damage": self._calculate_pet_damage(
+                "total_damage": self._calculate_pet_total_damage(
                     base_damage=pet["base_damage"],
                     rank=pet["rank"],
                 ),
@@ -33,31 +36,122 @@ class ExpeditionOptimizer:
             if pet["captured"] and int(pet_id) not in self._equipped_pets
         }
 
-    def optimize(self) -> Tuple[Tuple[int], float]:
-        if self._objective == "damage":
-            return self._optimize_damage()
-        elif self._objective == "tokens":
-            return self._optimize_damage()
-        elif self._objective == "rewards":
-            return self._optimize_damage()
+    def optimize(self) -> List[OptimizedExpeditionTeam]:
+        expedition_teams = []
 
-    def _optimize_damage(self) -> Tuple[Tuple[int], float]:
-        pets = self._available_pets
-
-        expedition_teams = {
-            expedition_team: self._calculate_expedition_team_damage(
-                expedition_team=list(expedition_team),
+        for expedition_team in combinations(
+            self._available_pets,
+            min(len(self._available_pets), 4),
+        ):
+            expedition_teams.append(
+                OptimizedExpeditionTeam(
+                    team=list(expedition_team),
+                    base_damage=self._calculate_expedition_team_damage(
+                        expedition_team=list(expedition_team),
+                        use_base_damage=True,
+                    ),
+                    total_damage=self._calculate_expedition_team_damage(
+                        expedition_team=list(expedition_team),
+                        use_base_damage=False,
+                    ),
+                    tokens=self._calculate_expedition_team_tokens_bonus(
+                        expedition_team=list(expedition_team),
+                    ),
+                    rewards=self._calculate_expedition_team_rewards_bonus(
+                        expedition_team=list(expedition_team),
+                    ),
+                )
             )
-            for expedition_team in combinations(pets, min(len(pets), 4))
-        }
 
-        optimal_expedition_team = max(expedition_teams, key=expedition_teams.get)
-        optimal_expedition_team_damage = expedition_teams[optimal_expedition_team]
+        expedition_teams.sort(
+            key=lambda x: [-getattr(x, objective) for objective in self._objectives],
+        )
 
-        return optimal_expedition_team, optimal_expedition_team_damage
+        optimal_teams = []
+        while expedition_teams:
+            optimal_team = expedition_teams.pop(0)
+            optimal_teams.append(optimal_team)
+
+            if len(optimal_teams) == 4:
+                break
+
+            expedition_teams = [
+                expedition_team for expedition_team in expedition_teams
+                if not set(expedition_team.team).intersection(optimal_team.team)
+            ]
+
+        return optimal_teams
+
+    def _calculate_expedition_team_damage(
+        self,
+        *,
+        expedition_team: List[int],
+        use_base_damage: bool = False,
+    ) -> float:
+        expedition_team_damage = 0.0
+        damage_bonus = 1.0
+        time_bonus = 1.0
+        synergy_bonus = len(expedition_team) * 0.25
+        pet_types = Counter()
+
+        for pet_id in expedition_team:
+            pet = self._available_pets[pet_id]
+
+            if use_base_damage:
+                expedition_team_damage += pet["base_damage"]
+            else:
+                expedition_team_damage += pet["total_damage"]
+
+            damage_bonus += pet["bonuses"].get("expedition_damage", 0.0)
+            time_bonus += pet["bonuses"].get("expedition_time", 0.0)
+
+            pet_types[pet["type"]] += 1
+
+        synergy_bonus += 0.25 * int(pet_types[1] > 0 and pet_types[2] > 0)
+        synergy_bonus += 0.25 * int(pet_types[1] > 1 and pet_types[2] > 1)
+
+        return round(
+            expedition_team_damage * damage_bonus * time_bonus * synergy_bonus,
+            2,
+        )
+
+    def _calculate_expedition_team_tokens_bonus(
+        self,
+        *,
+        expedition_team: List[int],
+    ) -> float:
+        expedition_team_token = 1.0
+
+        for pet_id in expedition_team:
+            expedition_team_token += self._available_pets[pet_id]["bonuses"].get(
+                "expedition_tokens",
+                0.0,
+            )
+
+        return round(expedition_team_token, 2)
+
+    def _calculate_expedition_team_rewards_bonus(
+        self,
+        *,
+        expedition_team: List[int],
+    ) -> float:
+        expedition_team_reward = 1.0
+        expedition_team_time = 1.0
+
+        for pet_id in expedition_team:
+            expedition_team_reward += self._available_pets[pet_id]["bonuses"].get(
+                "expedition_rewards",
+                0.0,
+            )
+            expedition_team_time += self._available_pets[pet_id]["bonuses"].get(
+                "expedition_time",
+                0.0,
+            )
+
+        return round(expedition_team_reward * expedition_team_time, 2)
 
     @cache
-    def _calculate_pet_damage(self, *, base_damage: float, rank: int) -> float:
+    def _calculate_pet_total_damage(self, *, base_damage: float, rank: int) -> float:
         farmer = self._farmer
 
         @cache
@@ -99,25 +193,3 @@ class ExpeditionOptimizer:
                 * (1.0 + _get_number_of_active_expedition_damage_combos() * 0.25)
             )
         )
-
-    def _calculate_expedition_team_damage(self, *, expedition_team: List[int]) -> float:
-        expedition_team_damage = 0.0
-        damage_bonus = 1.0
-        time_bonus = 1.0
-        synergy_bonus = len(expedition_team) * 0.25
-        pet_types = Counter()
-
-        for pet_id in expedition_team:
-            pet = self._available_pets[pet_id]
-
-            expedition_team_damage += pet["total_damage"]
-
-            damage_bonus += pet["bonuses"].get("expedition_damage", 0)
-            time_bonus += pet["bonuses"].get("expedition_time", 0)
-
-            pet_types[pet["type"]] += 1
-
-        synergy_bonus += 0.25 * int(pet_types[1] > 0 and pet_types[2] > 0)
-        synergy_bonus += 0.25 * int(pet_types[1] > 1 and pet_types[2] > 1)
-
-        return expedition_team_damage * damage_bonus * time_bonus * synergy_bonus

@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
-import { Expedition } from '../../types/expeditions';
+import { ExpeditionTeam } from '../../types/expeditions';
 import { type Farmer } from '../../types/farmer';
 import { optimizeExpedition } from '../../utils/expeditions';
 import EmptyMain from './EmptyMain';
@@ -13,8 +13,8 @@ interface Props {
 }
 
 const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
-  const { data: expedition } = useQuery<Expedition>({
-    queryKey: ['expedition'],
+  const { data: expeditions } = useQuery<Array<ExpeditionTeam>>({
+    queryKey: ['expeditions'],
     queryFn: () =>
       optimizeExpedition(
         farmer.id,
@@ -23,11 +23,9 @@ const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
     enabled: !!farmer,
   });
 
-  if (!expedition) {
+  if (!expeditions) {
     return <EmptyMain />;
   }
-
-  const expeditionPets = expedition.team.map((petId) => farmer.pets[petId]);
 
   return (
     <>
@@ -37,13 +35,20 @@ const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
             Expeditions
           </Typography>
         </Container>
-        {expeditionPets && (
+        {expeditions && (
           <Container sx={{ py: 4 }} maxWidth="md">
             <>
-              <p>This is your optimal expedition team, and it deals {Math.round(expedition.damage)} damage per hour.</p>
-              {expeditionPets.map((pet) => (
-                <img key={pet.id} src={`/pets/${pet.name}.png`} alt={pet.name} />
-              ))}
+              {expeditions.map((expedition) => {
+                const expeditionPets = expedition.team.map((petId) => farmer.pets[petId]);
+                return (
+                  <>
+                    <p>Total damage: {expedition.total_damage}</p>
+                    {expeditionPets.map((pet) => (
+                      <img key={pet.id} src={`/pets/${pet.name}.png`} alt={pet.name} />
+                    ))}
+                  </>
+                );
+              })}
             </>
           </Container>
         )}

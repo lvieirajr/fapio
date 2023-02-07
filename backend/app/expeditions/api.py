@@ -1,9 +1,14 @@
+from typing import List
+
 from fastapi import APIRouter
 from sqlalchemy.orm import Session
 
 from app.core.db import DB
 from app.expeditions.optimization import ExpeditionOptimizer
-from app.expeditions.schemas import ExpeditionOptimizationParameters
+from app.expeditions.schemas import (
+    ExpeditionOptimizationParameters,
+    OptimizedExpeditionTeam,
+)
 
 
 router = APIRouter(prefix="/expeditions")
@@ -13,10 +18,8 @@ router = APIRouter(prefix="/expeditions")
 async def optimize_expedition(
     optimization_parameters: ExpeditionOptimizationParameters,
     db: Session = DB,
-) -> dict:
-    optimal_team, optimal_team_damage = ExpeditionOptimizer(
+) -> List[OptimizedExpeditionTeam]:
+    return ExpeditionOptimizer(
         db=db,
         parameters=optimization_parameters,
     ).optimize()
-
-    return {"team": optimal_team, "damage": optimal_team_damage}

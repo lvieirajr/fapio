@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <ThemeProvider theme={Theme}>
         <CssBaseline />
         <App />
-        {import.meta.env.VITE_API_URL !== 'development' && <Analytics />}
+        {import.meta.env.VITE_ENVIRONMENT !== 'development' && <Analytics />}
       </ThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>,
