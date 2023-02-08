@@ -7,7 +7,7 @@ readme = "README.md"
 
 
 [tool.poetry.dependencies]
-python = {version = "^3.11"}
+python = {version = "^3.11.1"}
 fastapi = {version = "^0.89.1", python = "^3.11"}
 uvicorn = {version = "^0.20.0", python = "^3.11", extras = ["standard"]}
 sqlalchemy = {version = "^1.4.46", python = "^3.11"}
