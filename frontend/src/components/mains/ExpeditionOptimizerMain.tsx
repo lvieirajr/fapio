@@ -1,4 +1,5 @@
 import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -15,13 +16,14 @@ interface Props {
 }
 
 const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
-  const [objectives, setObjectives] = React.useState<Array<string>>(["total_damage"]);
+  const [excludeActivePets, setExcludeActivePets] = React.useState<boolean>(false);
+  const [objectives, setObjectives] = React.useState<Array<string>>(['total_damage']);
   const { data: expeditions, refetch } = useQuery<Array<ExpeditionTeam>>({
     queryKey: ['expeditions'],
     queryFn: () =>
       optimizeExpedition(
         farmer.id,
-        farmer.json.EquipedPetID.filter((petId) => petId != 0),
+        excludeActivePets ? farmer.json.EquipedPetID.filter((petId) => petId != 0) : [],
         [],
         objectives,
       ),
@@ -34,6 +36,10 @@ const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
       target: { value },
     } = event;
     setObjectives(typeof value === 'string' ? value.split(',') : value);
+  };
+
+  const handleToggleActivePets = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setExcludeActivePets(event.target.checked);
   };
 
   return (
@@ -51,17 +57,20 @@ const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
             </Button>
           </Typography>
           <Typography component="h1" variant="h3" align="center" color="text.primary" gutterBottom>
-            <Select
-              id="optimization-objective"
-              multiple
-              value={objectives}
-              onChange={handleObjectiveSelect}
-            >
+            <Select id="optimization-objective" multiple value={objectives} onChange={handleObjectiveSelect}>
               <MenuItem value="total_damage">Total Damage</MenuItem>
               <MenuItem value="base_damage">Base Damage</MenuItem>
               <MenuItem value="tokens">Tokens</MenuItem>
               <MenuItem value="rewards">Rewards</MenuItem>
             </Select>
+          </Typography>
+          <Typography component="h1" variant="body1" align="center" color="text.primary" gutterBottom>
+            <label>Exclude active pets</label>
+            <Checkbox
+              checked={excludeActivePets}
+              onChange={handleToggleActivePets}
+              inputProps={{ 'aria-label': 'controlled' }}
+            />
           </Typography>
         </Container>
         {expeditions && (
