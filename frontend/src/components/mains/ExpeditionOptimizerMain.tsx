@@ -60,7 +60,7 @@ const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
               <MenuItem value="total_damage">Total Damage</MenuItem>
               <MenuItem value="base_damage">Base Damage</MenuItem>
               <MenuItem value="tokens">Tokens</MenuItem>
-              <MenuItem value="tewards">Rewards</MenuItem>
+              <MenuItem value="rewards">Rewards</MenuItem>
             </Select>
           </Typography>
         </Container>
