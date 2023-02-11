@@ -1,26 +1,31 @@
 from typing import List, Literal
 from uuid import UUID
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class ExpeditionOptimizationObjective(BaseModel):
     name: Literal["base_damage", "total_damage", "tokens", "rewards"]
-    min: float
-    max: float
+
+    min: float = float("-inf")
+    max: float = float("inf")
 
 
 class ExpeditionOptimizationParameters(BaseModel):
     farmer_id: UUID
-    equipped_pets: List[int]
-    excluded_pets: List[int]
+
+    equipped_pets: List[int] = Field(default_factory=list)
+    excluded_pets: List[int] = Field(default_factory=list)
+
     objectives: List[ExpeditionOptimizationObjective]
 
 
 class OptimizedExpeditionTeam(BaseModel):
     team: List[int]
+
     base_damage: float
     total_damage: float
+
     tokens: float
     rewards: float
 
