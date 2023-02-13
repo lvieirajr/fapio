@@ -48,7 +48,7 @@ class ExpeditionOptimizer:
             ]
         )
 
-        self._pets = {pet.id: pet for pet in pets[:30]}
+        self._pets = {pet.id: pet for pet in pets[:35]}
 
     def optimize(self) -> List[OptimizedExpeditionTeam]:
         expedition_teams_dict = {
