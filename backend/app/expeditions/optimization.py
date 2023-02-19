@@ -1,6 +1,7 @@
 from collections import Counter
 from itertools import combinations
 from functools import cache
+from math import log
 from typing import List
 
 from sqlalchemy.orm import Session
@@ -31,8 +32,11 @@ class ExpeditionOptimizer:
                 PetExpeditionData(
                     id=int(pet_id),
                     type=pet["type"],
-                    base_damage=pet["base_damage"],
-                    total_damage=self._calculate_pet_total_damage(
+                    base_damage=self._calculate_pet_damage(
+                        base_damage=pet["base_damage"],
+                        rank=0,
+                    ),
+                    total_damage=self._calculate_pet_damage(
                         base_damage=pet["base_damage"],
                         rank=pet["rank"],
                     ),
@@ -48,10 +52,9 @@ class ExpeditionOptimizer:
             ]
         )
 
-        self._pets = {pet.id: pet for pet in pets[:50]}
+        self._pets = {pet.id: pet for pet in pets[:40]}
 
     def optimize(self) -> List[OptimizedExpeditionTeam]:
-        print("bla")
         expedition_teams_dict = {
             expedition_team: OptimizedExpeditionTeam(
                 team=list(expedition_team),
@@ -99,6 +102,28 @@ class ExpeditionOptimizer:
             ]
 
         return optimal_teams
+
+    def _sort_by_objectives(
+        self,
+        *,
+        to_sort: List[OptimizedExpeditionTeam | PetExpeditionData],
+    ) -> List[OptimizedExpeditionTeam | PetExpeditionData]:
+        def _get_objectives(element: OptimizedExpeditionTeam | PetExpeditionData):
+            sorting_objectives = [
+                -getattr(element, str(objective.name))
+                for objective in self._objectives
+            ] + [-element.total_damage]
+
+            if hasattr(element, "damage"):
+                sorting_objectives.append(
+                    -(element.damage + element.time + element.tokens + element.rewards)
+                )
+            else:
+                sorting_objectives.append(-(element.tokens + element.rewards))
+
+            return sorting_objectives
+
+        return sorted(to_sort, key=_get_objectives)
 
     def _calculate_expedition_team_damage(
         self,
@@ -154,7 +179,7 @@ class ExpeditionOptimizer:
         return round((1.0 + time_bonus) * (1.0 + rewards_bonus), 2)
 
     @cache
-    def _calculate_pet_total_damage(self, *, base_damage: float, rank: int) -> float:
+    def _calculate_pet_damage(self, *, base_damage: float, rank: int) -> float:
         farmer = self._farmer
 
         @cache
@@ -194,27 +219,49 @@ class ExpeditionOptimizer:
                 * (1.0 + (farmer.ascensions - 8 if farmer.ascensions > 8 else 0) * 0.25)
                 * (1.0 + farmer.expedition_shop_pet_damage_level * 0.05)
                 * (1.0 + _get_number_of_active_expedition_damage_combos() * 0.25)
+                * (1.0 + self._calculate_gear_pet_damage_bonus())
             )
         )
 
-    def _sort_by_objectives(
-        self,
-        *,
-        to_sort: List[OptimizedExpeditionTeam | PetExpeditionData],
-    ) -> List[OptimizedExpeditionTeam | PetExpeditionData]:
-        def _get_objectives(element: OptimizedExpeditionTeam | PetExpeditionData):
-            sorting_objectives = [
-                -getattr(element, str(objective.name))
-                for objective in self._objectives
-            ] + [-element.total_damage]
+    @cache
+    def _calculate_gear_pet_damage_bonus(self) -> float:
+        enhancing_power = self._farmer.json["EnhancingPower"]
+        ascension_best_area = self._farmer.json["AscensionBestArea"]
+        ascension_best_item_rating = self._farmer.json["AscensionBestItemRating"]
 
-            if hasattr(element, "damage"):
-                sorting_objectives.append(
-                    -(element.damage + element.time + element.tokens + element.rewards)
+        gear = []
+        for item in self._farmer.json["EquippedItems"]:
+            if not item:
+                continue
+
+            piece = {
+                "area": item["AreaDropped"],
+                "refine": item["RefineLevel"],
+                "total_rating": 0.0,
+                "pet_damage": 0.0,
+            }
+            for bonus in item["BonusList"]:
+                piece["total_rating"] += bonus["Power"]
+
+                if bonus["BonusID"] == 24:
+                    piece["pet_damage"] = bonus["Power"]
+
+            gear.append(piece)
+
+        pet_damage_bonus = 0.0
+        for piece in gear:
+            pet_damage_bonus += (
+                1.13
+                ** log(
+                    (
+                        piece["pet_damage"]
+                        * (1.0 + piece["refine"] * enhancing_power)
+                        * 1.0 if ascension_best_area >= piece["area"] else (
+                           min(1.0, ascension_best_item_rating / piece["total_rating"])
+                        )
+                    ),
+                    1.65,
                 )
-            else:
-                sorting_objectives.append(-(element.tokens + element.rewards))
+            ) * 5e-5
 
-            return sorting_objectives
-
-        return sorted(to_sort, key=_get_objectives)
+        return pet_damage_bonus
