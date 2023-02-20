@@ -250,6 +250,9 @@ class ExpeditionOptimizer:
 
         pet_damage_bonus = 0.0
         for piece in gear:
+            if not piece["pet_damage"]:
+                continue
+
             pet_damage_bonus += (
                 1.13
                 ** log(
