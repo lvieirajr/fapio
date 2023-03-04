@@ -46,9 +46,7 @@ class ExpeditionOptimizer:
                     rewards=pet["bonuses"].get("expedition_rewards", 0.0),
                 )
                 for pet_id, pet in self._farmer.pets.items()
-                if pet["captured"] and int(pet_id) not in (
-                    self._equipped_pets + self._excluded_pets
-                )
+                if pet["captured"] and int(pet_id) not in self._excluded_pets
             ]
         )
 

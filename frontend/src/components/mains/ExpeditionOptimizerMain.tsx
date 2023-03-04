@@ -1,5 +1,4 @@
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -16,7 +15,7 @@ interface Props {
 }
 
 const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
-  const [excludeActivePets, setExcludeActivePets] = React.useState<boolean>(false);
+  const [activePets, setActivePets] = React.useState<Array<string>>([]);
   const [excludedPets, setExcludedPets] = React.useState<Array<string>>([]);
   const [objectives, setObjectives] = React.useState<Array<string>>(['total_damage']);
   const { data: expeditions, refetch } = useQuery<Array<ExpeditionTeam>>({
@@ -24,7 +23,7 @@ const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
     queryFn: () =>
       optimizeExpedition(
         farmer.id,
-        excludeActivePets ? farmer.json.EquipedPetID.filter((petId) => petId != 0) : [],
+        activePets.map((petId) => +petId),
         excludedPets.map((petId) => +petId),
         objectives,
       ),
@@ -39,15 +38,18 @@ const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
     setObjectives(typeof value === 'string' ? value.split(',') : value);
   };
 
+  const handleActivePetsSelect = (event: SelectChangeEvent<typeof activePets>) => {
+    const {
+      target: { value },
+    } = event;
+    setActivePets(typeof value === 'string' ? value.split(',') : value);
+  };
+
   const handleExcludePetsSelect = (event: SelectChangeEvent<typeof excludedPets>) => {
     const {
       target: { value },
     } = event;
     setExcludedPets(typeof value === 'string' ? value.split(',') : value);
-  };
-
-  const handleToggleActivePets = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setExcludeActivePets(event.target.checked);
   };
 
   return (
@@ -74,15 +76,19 @@ const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
             </Select>
           </Typography>
           <Typography component="h1" variant="body1" align="center" color="text.primary" gutterBottom>
-            <label>Exclude active pets: </label>
-            <Checkbox
-              checked={excludeActivePets}
-              onChange={handleToggleActivePets}
-              inputProps={{ 'aria-label': 'controlled' }}
-            />
+            <label>Active pets: </label>
+            <Select id="active-pets" multiple value={activePets} onChange={handleActivePetsSelect}>
+              {Object.values(farmer.pets).map((pet) => {
+                return (
+                  <MenuItem key={`${pet.id}`} value={`${pet.id}`}>
+                    {pet.name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
           </Typography>
           <Typography component="h1" variant="body1" align="center" color="text.primary" gutterBottom>
-            <label>Exclude pets: </label>
+            <label>Pets to exclude: </label>
             <Select id="exclude-pets" multiple value={excludedPets} onChange={handleExcludePetsSelect}>
               {Object.values(farmer.pets).map((pet) => {
                 return (
