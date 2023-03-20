@@ -1,7 +1,7 @@
 # ======================================================================================
-# Base Image - Python 3.11 Slim
+# Base Image - Python 3.10 Slim
 # ======================================================================================
-FROM python:3.11-slim as base
+FROM python:3.10-slim as base
 
 # Working directory
 WORKDIR /app/

@@ -12,7 +12,6 @@ from app.expeditions.schemas import (
     PetExpeditionData,
 )
 from app.farmer.repositories import FarmerRepository
-from app.pets.constants import PET_COMBOS
 
 
 class ExpeditionOptimizer:
@@ -27,30 +26,31 @@ class ExpeditionOptimizer:
         self._excluded_pets = parameters.excluded_pets
         self._objectives = parameters.objectives
 
-        pets = self._sort_by_objectives(
-            to_sort=[
-                PetExpeditionData(
-                    id=int(pet_id),
-                    type=pet["type"],
-                    base_damage=self._calculate_pet_damage(
-                        base_damage=pet["base_damage"],
-                        rank=0,
-                    ),
-                    total_damage=self._calculate_pet_damage(
-                        base_damage=pet["base_damage"],
-                        rank=pet["rank"],
-                    ),
-                    damage=pet["bonuses"].get("expedition_damage", 0.0),
-                    time=pet["bonuses"].get("expedition_time", 0.0),
-                    tokens=pet["bonuses"].get("expedition_tokens", 0.0),
-                    rewards=pet["bonuses"].get("expedition_rewards", 0.0),
-                )
-                for pet_id, pet in self._farmer.pets.items()
-                if pet["captured"] and int(pet_id) not in self._excluded_pets
-            ]
-        )
-
-        self._pets = {pet.id: pet for pet in pets[:40]}
+        self._pets = {
+            pet.id: pet
+            for pet in self._sort_by_objectives(
+                to_sort=[
+                    PetExpeditionData(
+                        id=int(pet_id),
+                        type=pet["type"],
+                        base_damage=self._calculate_pet_damage(
+                            base_damage=pet["base_damage"],
+                            rank=0,
+                        ),
+                        total_damage=self._calculate_pet_damage(
+                            base_damage=pet["base_damage"],
+                            rank=pet["rank"],
+                        ),
+                        damage=pet["bonuses"].get("1013", 0.0),
+                        time=pet["bonuses"].get("1012", 0.0),
+                        tokens=pet["bonuses"].get("1016", 0.0),
+                        rewards=pet["bonuses"].get("1011", 0.0),
+                    )
+                    for pet_id, pet in self._farmer.pets.items()
+                    if pet["captured"] and int(pet_id) not in self._excluded_pets
+                ]
+            )[:50]
+        }
 
     def optimize(self) -> List[OptimizedExpeditionTeam]:
         expedition_teams_dict = {
@@ -86,6 +86,8 @@ class ExpeditionOptimizer:
             to_sort=list(expedition_teams_dict.values()),
         )
 
+        del expedition_teams_dict
+
         optimal_teams = []
         while expedition_teams:
             optimal_team = expedition_teams.pop(0)
@@ -98,6 +100,9 @@ class ExpeditionOptimizer:
                 expedition_team for expedition_team in expedition_teams
                 if not set(expedition_team.team).intersection(optimal_team.team)
             ]
+
+        del expedition_teams
+        del self._pets
 
         return optimal_teams
 
@@ -184,9 +189,10 @@ class ExpeditionOptimizer:
         def _get_number_of_active_expedition_damage_combos():
             active_expedition_damage_combos = 0
 
-            for combo_id in [34, 35, 36]:
-                if set(PET_COMBOS[combo_id]["combo"]).issubset(self._equipped_pets):
-                    active_expedition_damage_combos += 1
+            for pet_combo in farmer.json["PetsSpecial"]:
+                if pet_combo["ID"] in [34, 35, 36, 57, 58]:
+                    if set(pet_combo["PetID"]).issubset(self._equipped_pets):
+                        active_expedition_damage_combos += 1
 
             return active_expedition_damage_combos
 
@@ -216,7 +222,7 @@ class ExpeditionOptimizer:
                 )
                 * (1.0 + (farmer.ascensions - 8 if farmer.ascensions > 8 else 0) * 0.25)
                 * (1.0 + farmer.expedition_shop_pet_damage_level * 0.05)
-                * (1.0 + _get_number_of_active_expedition_damage_combos() * 0.25)
+                * (1.0 + _get_number_of_active_expedition_damage_combos() * 0.1)
                 * (1.0 + self._calculate_gear_pet_damage_bonus())
             )
         )
@@ -224,7 +230,6 @@ class ExpeditionOptimizer:
     @cache
     def _calculate_gear_pet_damage_bonus(self) -> float:
         enhancing_power = self._farmer.json["EnhancingPower"]
-        ascension_best_area = self._farmer.json["AscensionBestArea"]
         ascension_best_item_rating = self._farmer.json["AscensionBestItemRating"]
 
         gear = []
@@ -257,9 +262,7 @@ class ExpeditionOptimizer:
                     (
                         piece["pet_damage"]
                         * (1.0 + piece["refine"] * enhancing_power)
-                        * 1.0 if ascension_best_area >= piece["area"] else (
-                           min(1.0, ascension_best_item_rating / piece["total_rating"])
-                        )
+                        * min(1.0, ascension_best_item_rating / piece["total_rating"])
                     ),
                     1.65,
                 )

@@ -8,10 +8,10 @@ from sqlalchemy.exc import NoResultFound
 from app.core.db import BaseDBObject
 from app.core.repositories import BaseRepository
 from app.farmer.models import Farmer
-from app.pets.constants import PETS, PET_BONUSES
+from app.pets.constants import PETS
 
 
-FarmerType = TypeVar("FarmerType", bound=[BaseDBObject, Farmer])
+FarmerType = TypeVar("FarmerType", bound=Farmer)
 
 
 class FarmerRepository(BaseRepository[FarmerType]):
@@ -64,8 +64,9 @@ class FarmerRepository(BaseRepository[FarmerType]):
                 "level_exp": float(pet["LevelExp"]),
                 "level_exp_required": float(pet["LevelExpRequired"]),
                 "bonuses": {
-                    PET_BONUSES[int(bonus["ID"])]["bonus"]: (
-                        bonus[PET_BONUSES[int(bonus["ID"])]["key"]]
+                    bonus["ID"]: (
+                        bonus["Gain"] if bonus["Gain"] != 0
+                        else bonus["Power"]
                     )
                     for bonus in pet["BonusList"]
                 },

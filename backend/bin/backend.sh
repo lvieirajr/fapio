@@ -2,6 +2,4 @@
 
 set -ex
 
-uvicorn app.main:app \
-    --host 0.0.0.0 \
-    --port $PORT
+gunicorn app.main:app --worker-class uvicorn.workers.UvicornWorker --workers 2 --max-requests 10 --bind 0.0.0.0:$PORT
