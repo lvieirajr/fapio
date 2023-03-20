@@ -52,6 +52,11 @@ class ExpeditionOptimizer:
             )[:50]
         }
 
+    def clean(self) -> None:
+        del self._pets
+        del self._farmer
+        del self
+
     def optimize(self) -> List[OptimizedExpeditionTeam]:
         expedition_teams_dict = {
             expedition_team: OptimizedExpeditionTeam(
@@ -102,7 +107,6 @@ class ExpeditionOptimizer:
             ]
 
         del expedition_teams
-        del self._pets
 
         return optimal_teams
 

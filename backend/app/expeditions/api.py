@@ -19,7 +19,14 @@ async def optimize_expedition(
     optimization_parameters: ExpeditionOptimizationParameters,
     db: Session = DB,
 ) -> List[OptimizedExpeditionTeam]:
-    return ExpeditionOptimizer(
+    optimizer = ExpeditionOptimizer(
         db=db,
         parameters=optimization_parameters,
-    ).optimize()
+    )
+
+    optimized_expedition_teams = optimizer.optimize()
+
+    optimizer.clean()
+    del optimizer
+
+    return optimized_expedition_teams
