@@ -49,7 +49,7 @@ class ExpeditionOptimizer:
                     for pet_id, pet in self._farmer.pets.items()
                     if pet["captured"] and int(pet_id) not in self._excluded_pets
                 ]
-            )[:50]
+            )
         }
 
     def clean(self) -> None:
@@ -93,12 +93,17 @@ class ExpeditionOptimizer:
 
         del expedition_teams_dict
 
+        team_slots = (
+            1
+            + self._farmer.json["ExpeShopSlotLevel"]
+            + self._farmer.json["CowShopExpeditionSlot"]
+        )
         optimal_teams = []
         while expedition_teams:
             optimal_team = expedition_teams.pop(0)
             optimal_teams.append(optimal_team)
 
-            if len(optimal_teams) == 4:
+            if len(optimal_teams) == team_slots:
                 break
 
             expedition_teams = [

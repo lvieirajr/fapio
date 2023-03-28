@@ -81,7 +81,7 @@ const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
               {Object.values(farmer.pets).map((pet) => {
                 return (
                   <MenuItem key={`${pet.id}`} value={`${pet.id}`}>
-                    {pet.name}
+                    {pet.id}
                   </MenuItem>
                 );
               })}
@@ -93,7 +93,7 @@ const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
               {Object.values(farmer.pets).map((pet) => {
                 return (
                   <MenuItem key={`${pet.id}`} value={`${pet.id}`}>
-                    {pet.name}
+                    {pet.id}
                   </MenuItem>
                 );
               })}
@@ -111,7 +111,7 @@ const ExpeditionOptimizerMain: React.FC<Props> = ({ farmer }) => {
                     {expedition.tokens} | Rewards: {expedition.rewards}
                   </p>
                   {expeditionPets.map((pet, index) => (
-                    <img key={index} src={`/pets/${pet.name}.png`} alt={pet.name} />
+                    <img key={index} src={`/pets/${pet.id}.png`} alt={pet.id} />
                   ))}
                 </Container>
               );

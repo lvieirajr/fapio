@@ -5,10 +5,8 @@ from uuid import UUID, uuid4
 from sqlalchemy.orm import Session as DBSession
 from sqlalchemy.exc import NoResultFound
 
-from app.core.db import BaseDBObject
 from app.core.repositories import BaseRepository
 from app.farmer.models import Farmer
-from app.pets.constants import PETS
 
 
 FarmerType = TypeVar("FarmerType", bound=Farmer)
@@ -51,8 +49,6 @@ class FarmerRepository(BaseRepository[FarmerType]):
         farmer.pets = {
             int(pet["ID"]): {
                 "id": int(pet["ID"]),
-                "name": PETS[int(pet["ID"])]["name"],
-                "location": PETS[int(pet["ID"])]["location"],
                 "type": int(pet["Type"]),
                 "rarity": int(pet["Rarity"]),
                 "base_damage": float(pet["BaseDungeonDamage"]),
