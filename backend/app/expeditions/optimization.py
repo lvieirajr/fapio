@@ -49,7 +49,7 @@ class ExpeditionOptimizer:
                     for pet_id, pet in self._farmer.pets.items()
                     if pet["captured"] and int(pet_id) not in self._excluded_pets
                 ]
-            )
+            )[:70]
         }
 
     def clean(self) -> None:
